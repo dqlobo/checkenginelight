@@ -8,19 +8,19 @@ title: Posts Archive
 <div id="archives">
   <section id="archive">
      <h3>Most Recent Posts</h3>
-      {%for post in site.posts %}
-      {% unless post.next %}
       <ul class="this">
+      {% for post in site.posts %}
+      {% unless post.next %}
           {% else %}
           {% capture month %}{{ post.date | date: '%B %Y' }}{% endcapture %}
           {% capture nmonth %}{{ post.next.date | date: '%B %Y' }}{% endcapture %}
           {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
           {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
-          {% if year != nyear %}
       </ul>
+          {% if year != nyear %}
       <h2 style="text-align:left;">{{ post.date | date: '%Y' }}</h2>
+      {% endif %}
       <ul class="past">
-          {% endif %}
           {% if month != nmonth %}
           <h3 style="text-align:left;">{{ post.date | date: '%B %Y' }}</h3>
           {% endif %}
